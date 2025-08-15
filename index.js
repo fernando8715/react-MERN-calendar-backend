@@ -20,9 +20,9 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // ! rutas
-// todo: auth // crear, login, renova token
 app.use('/api/auth', require('./routes/auth'));
-// todo: CRUD: eventos
+app.use('/api/events', require('./routes/events'));
+
 
 // * escuchar peticiones
 app.listen(process.env.PORT, ()=>{
