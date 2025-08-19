@@ -11,15 +11,18 @@ const getEventos = (req, res = response)=> {
     })
 }
 
-const crearEvento = (req, res = response)=> {
+const crearEvento = async (req, res = response)=> {
     
-    // console.log(req.body);
-
+    const evento = new Evento(req.body);
+    
     try {
-        
+        evento.user = req.uid;
+        const eventoGuardado = await evento.save();
+        await evento.save();        
+
         return res.status(200).json({
             ok: true,
-            msg: 'usuario creado exitosamente'
+            evento: eventoGuardado,
         })
 
     } catch (error) {

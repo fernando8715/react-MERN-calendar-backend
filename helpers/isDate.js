@@ -1,4 +1,5 @@
-const moment = require('moment');
+const { isValid } = require("date-fns");
+
 
 const isDate = (value, {req, location, path}) => {
 
@@ -6,16 +7,13 @@ const isDate = (value, {req, location, path}) => {
         return false
     }
 
-    const fecha = moment(value);
+    const fecha = isValid(value);
 
-    if(fecha.isValid()){
-        return true
+    if(fecha){
+        return fecha
     }else {
         return false
-    }
-
-    
-    
+    }   
 }
 
 module.exports = { isDate }

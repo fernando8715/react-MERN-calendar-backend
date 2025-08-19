@@ -21,6 +21,7 @@ const revalidarJWT = (req, res = response, next) => {
             process.env.SECRET_PRIVATE_KEY,
         )
 
+        // * poder acceder al uid y name llamando el req
         req.uid = payload.uid;
         req.name = payload.name;
 
