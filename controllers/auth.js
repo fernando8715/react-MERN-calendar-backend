@@ -103,8 +103,8 @@ const revalidarToken = async (req, res = response) => {
 
     res.json({
         ok: true,
-        msg: 'revalidar toquen',
-        token
+        uid, name,
+        token,
     })
 }
 

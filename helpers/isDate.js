@@ -1,4 +1,4 @@
-const { isValid } = require("date-fns");
+const { isValid, getTime } = require("date-fns");
 
 
 const isDate = (value, {req, location, path}) => {
@@ -7,7 +7,8 @@ const isDate = (value, {req, location, path}) => {
         return false
     }
 
-    const fecha = isValid(value);
+    const getMiliseconds = getTime(value)
+    const fecha = isValid(getMiliseconds);
 
     if(fecha){
         return fecha
